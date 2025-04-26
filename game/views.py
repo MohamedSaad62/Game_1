@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from .models import MyTable
 # Create your views here.
 from django.http import HttpResponse
 import random as rd
@@ -16,6 +16,8 @@ class user:
 
 
 def index(request):
+    first_record = MyTable.objects.first()
+    print(first_record)
     req_headers = request.META
     x_forwarded_for_value = req_headers.get('HTTP_X_FORWARDED_FOR')
     if x_forwarded_for_value:
